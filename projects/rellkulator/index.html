@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rellkulator</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Rellkulator CSS -->
+    <style>
+        body {
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calculator-container {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .btn-calculator {
+            width: 100%;
+            height: 70px;
+            font-size: 1.5rem;
+        }
+
+        .display {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px;
+            border-radius: 0.375rem;
+        }
+
+        .display-sub {
+            height: 3rem;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        .display-main {
+            height: 3rem;
+            font-size: 2rem;
+        }
+
+        @media (max-width: 576px) {
+            .btn-calculator {
+                height: 60px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 calculator-container">
+
+                <!-- Title -->
+                <h1 class="text-center mb-4">Rellkulator</h1>
+
+                <!-- Version -->
+                <p class="text-center mt-3">Versi 1.0.0</p>
+
+                <!-- Calculator -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+
+                        <!-- Output -->
+                        <div class="display mb-3">
+                            <div id="sub_output" class="display-sub text-end"></div>
+                            <div id="output" class="display-main text-end">0</div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="row g-2">
+                            <div class="col-3">
+                                <button class="btn btn-light btn-calculator" id="button_percen" title="Persen">%</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-light btn-calculator" id="button_clear" title="Mengatur Ulang">MU</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-light btn-calculator" id="button_delete" title="Hapus">H</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-primary btn-calculator" id="button_div" title="Bagi">/</button>
+                            </div>
+                        </div>
+                        <div class="row g-2 mt-1">
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_7" title="Tujuh">7</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_8" title="Delapan">8</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_9" title="Sembilan">9</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-primary btn-calculator" id="button_mul" title="Kali">*</button>
+                            </div>
+                        </div>
+                        <div class="row g-2 mt-1">
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_4" title="Empat">4</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_5" title="Lima">5</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_6" title="Enam">6</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-primary btn-calculator" id="button_sub" title="Kurang">-</button>
+                            </div>
+                        </div>
+                        <div class="row g-2 mt-1">
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_1" title="Satu">1</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_2" title="Dua">2</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_3" title="Tiga">3</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-primary btn-calculator" id="button_add" title="Tambah">+</button>
+                            </div>
+                        </div>
+                        <div class="row g-2 mt-1">
+                            <div class="col-3">
+                                <button class="btn btn-light btn-calculator" id="button_positive_negative" title="Positif Atau Negatif">+/-</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-secondary btn-calculator" id="button_0" title="Nol">0</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-light btn-calculator" id="button_coma" title="Koma">,</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-danger btn-calculator" id="button_equal" title="Sama Dengan">=</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <a class="d-flex justify-content-center" title="Github Repo" target="_blank" href="https://github.com/Fern-Aerell/Rellkulator"><img class="rounded mt-3" height="32px" width="32px" src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" alt="github-icon"></a>
+                <a target="_blank" title="LICENSE" href="https://github.com/Fern-Aerell/Rellkulator/blob/main/LICENSE"><p class="text-center mt-3">Copyright &copy; 2025 Fern Aerell</p></a>
+                <p class="text-center mt-3">All rights reserved.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Rellkulator JS -->
+    <script>
+        // Output element
+        const elements = {
+            sub_output: document.getElementById("sub_output"),
+            output: document.getElementById("output")
+        };
+
+        // Button element
+        const buttons = {
+            clear: document.getElementById("button_clear"), // Reset
+            delete: document.getElementById("button_delete"), // Hapus
+            equal: document.getElementById("button_equal"), // Sama dengan
+            comma: document.getElementById("button_coma"), // Koma
+            percent: document.getElementById("button_percen"), // Persen
+            positiveNegative: document.getElementById("button_positive_negative"), // Positif dan negatif
+
+            // Math operator element
+            operators: {
+                div: document.getElementById("button_div"), // Bagi
+                mul: document.getElementById("button_mul"), // Kali
+                sub: document.getElementById("button_sub"), // Kurang
+                add: document.getElementById("button_add") // Tambah
+            },
+
+            // Numbers element
+            numbers: Array.from({ length: 10 }, (_, i) =>
+                document.getElementById(`button_${i}`)
+            )
+        };
+
+        // Math operator symbol
+        const OPERATORS = ['/', '*', '-', '+'];
+
+        // Class calculator
+        class Calculator {
+            constructor(subOutput, mainOutput) {
+                this.subOutput = subOutput;
+                this.mainOutput = mainOutput;
+
+                buttons.clear.addEventListener("click", () => this.clear());
+                buttons.delete.addEventListener("click", () => this.delete());
+                buttons.equal.addEventListener("click", () => this.calculate());
+                buttons.comma.addEventListener("click", () => this.insertComma());
+                buttons.percent.addEventListener("click", () => this.percentage());
+                buttons.positiveNegative.addEventListener("click", () => this.toggleSign());
+
+                buttons.numbers.forEach((btn, num) =>
+                    btn.addEventListener("click", () => this.insertNumber(num))
+                );
+
+                Object.values(buttons.operators).forEach((btn, index) =>
+                    btn.addEventListener("click", () => this.insertOperator(OPERATORS[index]))
+                );
+            }
+
+            // Reset function
+            clear() {
+                this.subOutput.innerText = "";
+                this.mainOutput.innerText = "0";
+            }
+
+            // Delete function
+            delete() {
+                this.mainOutput.innerText = this.mainOutput.innerText.slice(0, -1) || "0";
+            }
+
+            // Math error checking
+            checkMathError() {
+                if (["infinity", "nan"].some(err =>
+                    this.mainOutput.innerText.toLowerCase().includes(err) ||
+                    this.subOutput.innerText.toLowerCase().includes(err)
+                )) {
+                    Swal.fire({
+                        title: "Kesalahan",
+                        text: "Tidak dapat melakukan operasi matematika dengan Infinity dan NaN.",
+                        icon: "error"
+                    }).then(() => this.clear());
+                    return true;
+                }
+                return false;
+            }
+
+            // Insert number to output
+            insertNumber(num) {
+                if (this.checkMathError()) return;
+
+                this.mainOutput.innerText =
+                    this.mainOutput.innerText === "0" && num !== "."
+                        ? num
+                        : this.mainOutput.innerText + num;
+            }
+
+            // Insert comma to output
+            insertComma() {
+                if (this.checkMathError()) return;
+                if (!this.mainOutput.innerText.includes('.')) {
+                    this.mainOutput.innerText += '.';
+                }
+            }
+
+            // Insert operator to output
+            insertOperator(op) {
+                if (this.checkMathError()) return;
+
+                if (OPERATORS.includes(this.mainOutput.innerText.slice(-1))) {
+                    this.delete();
+                }
+
+                if (this.subOutput.innerText.length > 0) {
+                    this.subOutput.innerText = eval(`${this.subOutput.innerText}(${this.mainOutput.innerText})`);
+                    this.subOutput.innerText += ` ${op} `;
+                    this.mainOutput.innerText = "0";
+                    return;
+                }
+
+                this.subOutput.innerText += this.mainOutput.innerText + ` ${op} `;
+                this.mainOutput.innerText = "0";
+            }
+
+            // Calculate Math
+            calculate() {
+                if (this.checkMathError()) return;
+
+                if (this.subOutput.innerText.length > 0) {
+                    this.mainOutput.innerText = eval(`${this.subOutput.innerText}(${this.mainOutput.innerText})`);
+                    this.subOutput.innerText = "";
+                }
+            }
+
+            // Format number to percent
+            percentage() {
+                if (this.checkMathError()) return;
+
+                if (this.mainOutput.innerText.length > 0) {
+                    this.mainOutput.innerText = eval(`${this.mainOutput.innerText}/100`);
+                }
+            }
+
+            // Format number to negative or positive
+            toggleSign() {
+                if (this.checkMathError()) return;
+
+                const current = this.mainOutput.innerText;
+                if (current !== "0") {
+                    this.mainOutput.innerText =
+                        current.startsWith("-")
+                            ? current.slice(1)
+                            : `-${current}`;
+                }
+            }
+        }
+
+        // Initialize calculator
+        new Calculator(elements.sub_output, elements.output);
+    </script>
+</body>
+
+</html>
