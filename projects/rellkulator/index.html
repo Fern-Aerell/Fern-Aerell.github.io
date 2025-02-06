@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Digital Numbers Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/digital-numbers" rel="stylesheet">
+
     <!-- Rellkulator CSS -->
     <style>
         body {
@@ -35,16 +38,17 @@
             color: white;
             padding: 10px;
             border-radius: 0.375rem;
+            font-family: 'Digital Numbers', sans-serif;
         }
 
         .display-sub {
-            height: 3rem;
+            height: auto;
             font-size: 2rem;
             opacity: 0.7;
         }
 
         .display-main {
-            height: 3rem;
+            height: auto;
             font-size: 2rem;
         }
 
@@ -81,16 +85,18 @@
                         <!-- Buttons -->
                         <div class="row g-2">
                             <div class="col-3">
-                                <button class="btn btn-light btn-calculator" id="button_percen" title="Persen">%</button>
+                                <button class="btn btn-light btn-calculator" id="button_percen"
+                                    title="Persen">%</button>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-light btn-calculator" id="button_clear" title="Mengatur Ulang">MU</button>
+                                <button class="btn btn-light btn-calculator" id="button_clear"
+                                    title="Mengatur Ulang">MU</button>
                             </div>
                             <div class="col-3">
                                 <button class="btn btn-light btn-calculator" id="button_delete" title="Hapus">H</button>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-primary btn-calculator" id="button_div" title="Bagi">/</button>
+                                <button class="btn btn-primary btn-calculator" id="button_div" title="Bagi">÷</button>
                             </div>
                         </div>
                         <div class="row g-2 mt-1">
@@ -98,13 +104,15 @@
                                 <button class="btn btn-secondary btn-calculator" id="button_7" title="Tujuh">7</button>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary btn-calculator" id="button_8" title="Delapan">8</button>
+                                <button class="btn btn-secondary btn-calculator" id="button_8"
+                                    title="Delapan">8</button>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-secondary btn-calculator" id="button_9" title="Sembilan">9</button>
+                                <button class="btn btn-secondary btn-calculator" id="button_9"
+                                    title="Sembilan">9</button>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-primary btn-calculator" id="button_mul" title="Kali">*</button>
+                                <button class="btn btn-primary btn-calculator" id="button_mul" title="Kali">x</button>
                             </div>
                         </div>
                         <div class="row g-2 mt-1">
@@ -137,7 +145,8 @@
                         </div>
                         <div class="row g-2 mt-1">
                             <div class="col-3">
-                                <button class="btn btn-light btn-calculator" id="button_positive_negative" title="Positif Atau Negatif">+/-</button>
+                                <button class="btn btn-light btn-calculator" id="button_positive_negative"
+                                    title="Positif Atau Negatif">+/-</button>
                             </div>
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_0" title="Nol">0</button>
@@ -146,15 +155,21 @@
                                 <button class="btn btn-light btn-calculator" id="button_coma" title="Koma">,</button>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-danger btn-calculator" id="button_equal" title="Sama Dengan">=</button>
+                                <button class="btn btn-danger btn-calculator" id="button_equal"
+                                    title="Sama Dengan">=</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Copyright -->
-                <a class="d-flex justify-content-center" title="Github Repo" target="_blank" href="https://github.com/Fern-Aerell/Rellkulator"><img class="rounded mt-3" height="32px" width="32px" src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" alt="github-icon"></a>
-                <a target="_blank" title="LICENSE" href="https://github.com/Fern-Aerell/Rellkulator/blob/main/LICENSE"><p class="text-center mt-3">Copyright &copy; 2025 Fern Aerell</p></a>
+                <a class="d-flex justify-content-center" title="Github Repo" target="_blank"
+                    href="https://github.com/Fern-Aerell/Rellkulator"><img class="rounded mt-3" height="32px"
+                        width="32px" src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png"
+                        alt="github-icon"></a>
+                <a target="_blank" title="LICENSE" href="https://github.com/Fern-Aerell/Rellkulator/blob/main/LICENSE">
+                    <p class="text-center mt-3">Copyright &copy; 2025 Fern Aerell</p>
+                </a>
                 <p class="text-center mt-3">All rights reserved.</p>
 
             </div>
@@ -167,12 +182,15 @@
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Math JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@14.2.1/lib/browser/math.min.js"></script>
+
     <!-- Rellkulator JS -->
     <script>
         // Output element
-        const elements = {
-            sub_output: document.getElementById("sub_output"),
-            output: document.getElementById("output")
+        const outputs = {
+            sub: document.getElementById("sub_output"), // Output atas
+            main: document.getElementById("output") // Output bawah
         };
 
         // Button element
@@ -198,130 +216,171 @@
             )
         };
 
-        // Math operator symbol
-        const OPERATORS = ['/', '*', '-', '+'];
-
         // Class calculator
         class Calculator {
-            constructor(subOutput, mainOutput) {
-                this.subOutput = subOutput;
-                this.mainOutput = mainOutput;
 
-                buttons.clear.addEventListener("click", () => this.clear());
-                buttons.delete.addEventListener("click", () => this.delete());
-                buttons.equal.addEventListener("click", () => this.calculate());
-                buttons.comma.addEventListener("click", () => this.insertComma());
-                buttons.percent.addEventListener("click", () => this.percentage());
-                buttons.positiveNegative.addEventListener("click", () => this.toggleSign());
+            // Math operator symbol
+            OPERATORS = ['÷', 'x', '-', '+'];
 
-                buttons.numbers.forEach((btn, num) =>
+            constructor(outputs, buttons) {
+                this.outputs = outputs;
+                this.buttons = buttons;
+
+                // Add event listener 
+                this.buttons.clear.addEventListener("click", () => this.clear());
+                this.buttons.delete.addEventListener("click", () => this.delete());
+                this.buttons.equal.addEventListener("click", () => this.calculate());
+                this.buttons.comma.addEventListener("click", () => this.insertComma());
+                this.buttons.percent.addEventListener("click", () => this.insertPercent());
+                this.buttons.positiveNegative.addEventListener("click", () => this.toggleSign());
+
+                this.buttons.numbers.forEach((btn, num) =>
                     btn.addEventListener("click", () => this.insertNumber(num))
                 );
 
-                Object.values(buttons.operators).forEach((btn, index) =>
-                    btn.addEventListener("click", () => this.insertOperator(OPERATORS[index]))
+                Object.values(this.buttons.operators).forEach((btn, index) =>
+                    btn.addEventListener("click", () => this.insertOperator(this.OPERATORS[index]))
                 );
             }
 
             // Reset function
             clear() {
-                this.subOutput.innerText = "";
-                this.mainOutput.innerText = "0";
+                this.outputs.sub.innerText = "";
+                this.outputs.main.innerText = "0";
             }
 
             // Delete function
             delete() {
-                this.mainOutput.innerText = this.mainOutput.innerText.slice(0, -1) || "0";
+                if (this.outputs.main.innerText.includes(",") && this.outputs.main.innerText.split(",")[1].length == 1) {
+                    this.outputs.main.innerText = this.outputs.main.innerText.slice(0, -2);
+                    return;
+                }
+
+                this.outputs.main.innerText = this.outputs.main.innerText.slice(0, -1) || "0";
             }
 
             // Math error checking
-            checkMathError() {
-                if (["infinity", "nan"].some(err =>
-                    this.mainOutput.innerText.toLowerCase().includes(err) ||
-                    this.subOutput.innerText.toLowerCase().includes(err)
+            recoveryFromError() {
+                if (["∞", "kesalahan"].some(err =>
+                    this.outputs.main.innerText.toLowerCase().includes(err) ||
+                    this.outputs.sub.innerText.toLowerCase().includes(err)
                 )) {
-                    Swal.fire({
-                        title: "Kesalahan",
-                        text: "Tidak dapat melakukan operasi matematika dengan Infinity dan NaN.",
-                        icon: "error"
-                    }).then(() => this.clear());
-                    return true;
+                    this.clear();
                 }
-                return false;
             }
 
             // Insert number to output
             insertNumber(num) {
-                if (this.checkMathError()) return;
+                this.recoveryFromError();
 
-                this.mainOutput.innerText =
-                    this.mainOutput.innerText === "0" && num !== "."
+                let isPercent = false;
+
+                if (this.outputs.main.innerText.endsWith("%")) {
+                    this.outputs.main.innerText = this.outputs.main.innerText.slice(0, -1);
+                    isPercent = true;
+                }
+
+                if (this.outputs.main.innerText.endsWith(",0")) {
+                    this.outputs.main.innerText = this.outputs.main.innerText.slice(0, -1);
+                    this.outputs.main.innerText += num;
+                    return;
+                }
+
+                this.outputs.main.innerText =
+                    this.outputs.main.innerText === "0"
                         ? num
-                        : this.mainOutput.innerText + num;
+                        : this.outputs.main.innerText + num;
+
+                if (isPercent) {
+                    this.outputs.main.innerText += '%';
+                }
             }
 
             // Insert comma to output
             insertComma() {
-                if (this.checkMathError()) return;
-                if (!this.mainOutput.innerText.includes('.')) {
-                    this.mainOutput.innerText += '.';
+                this.recoveryFromError();
+                if (!this.outputs.main.innerText.includes(',')) {
+                    this.outputs.main.innerText += ',0';
                 }
             }
 
             // Insert operator to output
             insertOperator(op) {
-                if (this.checkMathError()) return;
+                this.recoveryFromError();
 
-                if (OPERATORS.includes(this.mainOutput.innerText.slice(-1))) {
+                if (this.OPERATORS.includes(this.outputs.main.innerText.slice(-1))) {
                     this.delete();
                 }
 
-                if (this.subOutput.innerText.length > 0) {
-                    this.subOutput.innerText = eval(`${this.subOutput.innerText}(${this.mainOutput.innerText})`);
-                    this.subOutput.innerText += ` ${op} `;
-                    this.mainOutput.innerText = "0";
+                if (this.outputs.sub.innerText.length > 0) {
+                    this.outputs.sub.innerText = this.evaluation(`${this.outputs.sub.innerText}(${this.outputs.main.innerText})`);
+                    this.outputs.sub.innerText += op;
+                    this.outputs.main.innerText = "0";
                     return;
                 }
 
-                this.subOutput.innerText += this.mainOutput.innerText + ` ${op} `;
-                this.mainOutput.innerText = "0";
+                this.outputs.sub.innerText += this.outputs.main.innerText + op;
+                this.outputs.main.innerText = "0";
             }
 
             // Calculate Math
             calculate() {
-                if (this.checkMathError()) return;
+                this.recoveryFromError();
 
-                if (this.subOutput.innerText.length > 0) {
-                    this.mainOutput.innerText = eval(`${this.subOutput.innerText}(${this.mainOutput.innerText})`);
-                    this.subOutput.innerText = "";
+                if(this.outputs.main.innerText == '20112005') {
+                    this.outputs.main.innerText = 'Fern Aerell'
+                    return;
+                }
+
+                if (this.outputs.sub.innerText.length > 0) {
+                    this.outputs.main.innerText = this.evaluation(`${this.outputs.sub.innerText}(${this.outputs.main.innerText})`);
+                    this.outputs.sub.innerText = "";
                 }
             }
 
             // Format number to percent
-            percentage() {
-                if (this.checkMathError()) return;
+            insertPercent() {
+                this.recoveryFromError();
 
-                if (this.mainOutput.innerText.length > 0) {
-                    this.mainOutput.innerText = eval(`${this.mainOutput.innerText}/100`);
+                if (this.outputs.main.innerText.length > 0 && !this.outputs.main.innerText.includes("%")) {
+                    this.outputs.main.innerText = `${this.outputs.main.innerText}%`;
                 }
             }
 
             // Format number to negative or positive
             toggleSign() {
-                if (this.checkMathError()) return;
+                this.recoveryFromError();
 
-                const current = this.mainOutput.innerText;
+                const current = this.outputs.main.innerText;
                 if (current !== "0") {
-                    this.mainOutput.innerText =
+                    this.outputs.main.innerText =
                         current.startsWith("-")
                             ? current.slice(1)
                             : `-${current}`;
                 }
             }
+
+            evaluation(expression) {
+                return String(
+                    math.evaluate(
+                        expression
+                            .replaceAll('÷', '/')
+                            .replaceAll('x', '*')
+                            .replaceAll(',', '.')
+                            .replaceAll('Fern Aerell', '20112005')
+                    )
+                )
+                    .replaceAll('/', '÷')
+                    .replaceAll('*', 'x')
+                    .replaceAll('.', ',')
+                    .replaceAll("Infinity", "∞")
+                    .replaceAll("NaN", "Kesalahan")
+                    ;
+            }
         }
 
         // Initialize calculator
-        new Calculator(elements.sub_output, elements.output);
+        new Calculator(outputs, buttons);
     </script>
 </body>
 
