@@ -11,56 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Styling khusus untuk aplikasi kalkulator RellKulator -->
-    <style>
-        /* Styling untuk body halaman */
-        body {
-            background-color: #f4f4f4;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Styling untuk container kalkulator */
-        .calculator-container {
-            max-width: 400px;
-            width: 100%;
-        }
-
-        /* Styling untuk tombol kalkulator */
-        .btn-calculator {
-            width: 100%;
-            height: 70px;
-            font-size: 1.5rem;
-        }
-
-        /* Styling untuk tampilan output kalkulator */
-        .display {
-            background-color: #6c757d;
-            color: white;
-            padding: 10px;
-            border-radius: 0.375rem;
-        }
-
-        .display-sub {
-            height: auto;
-            font-size: 2rem;
-            opacity: 0.7;
-        }
-
-        .display-main {
-            height: auto;
-            font-size: 2rem;
-        }
-
-        /* Responsif untuk perangkat dengan lebar layar kecil */
-        @media (max-width: 576px) {
-            .btn-calculator {
-                height: 60px;
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -76,12 +27,7 @@
                     <div class="card-body">
 
                         <!-- Tampilan Output Kalkulator -->
-                        <div class="display mb-3">
-                            <div id="sub_output" class="display-sub text-end"></div>
-                            <!-- Output atas (misalnya operasi sebelumnya) -->
-                            <div id="output" class="display-main text-end">0</div>
-                            <!-- Output utama (hasil kalkulasi) -->
-                        </div>
+                        <div id="output" class="display text-end mb-3">0</div>
 
                         <!-- Tombol-tombol kalkulator -->
                         <div class="row g-2">
@@ -171,7 +117,7 @@
                 <div class="d-flex justify-content-center gap-3">
                     <!-- Tautan ke desain Figma -->
                     <a class="d-flex justify-content-center" title="Figma Design" target="_blank"
-                        href="https://www.figma.com/design/1hk4GEFzVSF9iMyoRFg7KT/RellKulator?node-id=0-1&t=zyEoVKKgG9C0lXFp-1">
+                        href="https://www.figma.com/design/1hk4GEFzVSF9iMyoRFg7KT/RellKulator?node-id=0-1&t=SXYAZD0vbiCXD8DY-1">
                         <img class="rounded mt-4" height="32px" width="32px"
                             src="https://static-00.iconduck.com/assets.00/figma-icon-1024x1024-mvfh9xsk.png"
                             alt="figma-icon">
@@ -185,20 +131,11 @@
                             alt="github-icon">
                     </a>
 
-                    <!-- Tautan ke dokumentasi -->
-                    <a class="d-flex justify-content-center" title="Dokumentasi" target="_blank"
-                        href="https://github.com/Fern-Aerell/Rellkulator/blob/main/docs.md">
+                    <!-- Tautan ke manual book -->
+                    <a class="d-flex justify-content-center" title="Manual Book" target="_blank"
+                        href="https://github.com/Fern-Aerell/Rellkulator/blob/main/docs/manual_book.md">
                         <img class="rounded mt-4" height="32px" width="32px"
-                            src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png"
-                            alt="dokumentasi-icon">
-                    </a>
-
-                    <!-- Tautan ke informasi -->
-                    <a class="d-flex justify-content-center" title="Informasi" target="_blank"
-                        href="https://raw.githubusercontent.com/Fern-Aerell/Rellkulator/refs/heads/main/info.png">
-                        <img class="rounded mt-4" height="32px" width="32px"
-                            src="https://icons.veryicon.com/png/o/miscellaneous/jt2/question-mark-circle.png"
-                            alt="informasi-icon">
+                            src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" alt="manual-book-icon">
                     </a>
                 </div>
             </div>
@@ -208,222 +145,8 @@
     <!-- Menyertakan Bootstrap JS untuk interaktivitas -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Menyertakan SweetAlert2 JS untuk menampilkan popup alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- Menyertakan Math.js untuk melakukan perhitungan matematika -->
-    <script src="https://cdn.jsdelivr.net/npm/mathjs@14.2.1/lib/browser/math.min.js"></script>
-
     <!-- Script utama untuk logika kalkulator -->
-    <script>
-        // Menginisialisasi objek outputs yang berisi elemen output kalkulator
-        const outputs = {
-            sub: document.getElementById("sub_output"), // Menyimpan elemen output atas
-            main: document.getElementById("output") // Menyimpan elemen output bawah
-        };
-
-        // Menginisialisasi objek buttons yang berisi elemen tombol kalkulator
-        const buttons = {
-            clear: document.getElementById("button_clear"), // Tombol reset
-            delete: document.getElementById("button_delete"), // Tombol hapus
-            equal: document.getElementById("button_equal"), // Tombol sama dengan
-            comma: document.getElementById("button_coma"), // Tombol koma
-            percent: document.getElementById("button_percen"), // Tombol persen
-            positiveNegative: document.getElementById("button_positive_negative"), // Tombol positif/negatif
-
-            // Elemen untuk operator matematika
-            operators: {
-                div: document.getElementById("button_div"), // Tombol bagi
-                mul: document.getElementById("button_mul"), // Tombol kali
-                sub: document.getElementById("button_sub"), // Tombol kurang
-                add: document.getElementById("button_add") // Tombol tambah
-            },
-
-            // Elemen untuk angka
-            numbers: Array.from({ length: 10 }, (_, i) =>
-                document.getElementById(`button_${i}`) // Menyimpan tombol angka 0-9
-            )
-        };
-
-        // Kelas Kalkulator untuk menangani seluruh logika kalkulator
-        class Calculator {
-            // Simbol operator matematika
-            OPERATORS = ['÷', 'x', '-', '+'];
-
-            constructor(outputs, buttons) {
-                this.outputs = outputs;
-                this.buttons = buttons;
-
-                // Menambahkan event listener untuk setiap tombol
-                this.buttons.clear.addEventListener("click", () => this.clear()); // Tombol reset
-                this.buttons.delete.addEventListener("click", () => this.delete()); // Tombol hapus
-                this.buttons.equal.addEventListener("click", () => this.calculate()); // Tombol sama dengan
-                this.buttons.comma.addEventListener("click", () => this.insertComma()); // Tombol koma
-                this.buttons.percent.addEventListener("click", () => this.insertPercent()); // Tombol persen
-                this.buttons.positiveNegative.addEventListener("click", () => this.toggleSign()); // Tombol positif/negatif
-
-                // Menambahkan event listener untuk tombol angka
-                this.buttons.numbers.forEach((btn, num) =>
-                    btn.addEventListener("click", () => this.insertNumber(num))
-                );
-
-                // Menambahkan event listener untuk tombol operator matematika
-                Object.values(this.buttons.operators).forEach((btn, index) =>
-                    btn.addEventListener("click", () => this.insertOperator(this.OPERATORS[index]))
-                );
-            }
-
-            // Fungsi untuk mengatur ulang kalkulator
-            clear() {
-                this.outputs.sub.innerText = ""; // Menghapus output atas
-                this.outputs.main.innerText = "0"; // Mengatur output bawah ke 0
-            }
-
-            // Fungsi untuk menghapus angka terakhir pada output bawah
-            delete() {
-                // Jika terdapat koma dan angka setelah koma, hapus satu digit setelah koma
-                if (this.outputs.main.innerText.includes(",") && this.outputs.main.innerText.split(",")[1].length == 1) {
-                    this.outputs.main.innerText = this.outputs.main.innerText.slice(0, -2); // Hapus angka setelah koma
-                    return;
-                }
-
-                // Hapus satu karakter terakhir, jika kosong tampilkan 0
-                this.outputs.main.innerText = this.outputs.main.innerText.slice(0, -1) || "0";
-            }
-
-            // Fungsi untuk memulihkan dari error pada hasil perhitungan
-            recoveryFromError() {
-                // Memeriksa apakah ada error (∞ atau kesalahan) pada output dan mengatur ulang kalkulator
-                if (["∞", "kesalahan"].some(err =>
-                    this.outputs.main.innerText.toLowerCase().includes(err) ||
-                    this.outputs.sub.innerText.toLowerCase().includes(err)
-                )) {
-                    this.clear(); // Reset kalkulator
-                }
-            }
-
-            // Fungsi untuk memasukkan angka pada output bawah
-            insertNumber(num) {
-                this.recoveryFromError(); // Memeriksa apakah ada error
-
-                let isPercent = false;
-
-                // Jika angka sebelumnya berakhiran persen, hilangkan persen dan tandai
-                if (this.outputs.main.innerText.endsWith("%")) {
-                    this.outputs.main.innerText = this.outputs.main.innerText.slice(0, -1);
-                    isPercent = true;
-                }
-
-                // Jika output berakhiran ",0", ganti dengan angka baru
-                if (this.outputs.main.innerText.endsWith(",0")) {
-                    this.outputs.main.innerText = this.outputs.main.innerText.slice(0, -1);
-                    this.outputs.main.innerText += num;
-                    return;
-                }
-
-                // Jika output adalah 0, tampilkan angka yang dimasukkan, jika tidak tambahkan angka pada output
-                this.outputs.main.innerText =
-                    this.outputs.main.innerText === "0"
-                        ? num
-                        : this.outputs.main.innerText + num;
-
-                // Jika sebelumnya terdapat persen, tambahkan kembali persen pada output
-                if (isPercent) {
-                    this.outputs.main.innerText += '%';
-                }
-            }
-
-            // Fungsi untuk menambahkan koma pada angka
-            insertComma() {
-                this.recoveryFromError(); // Memeriksa error
-                if (!this.outputs.main.innerText.includes(',')) {
-                    this.outputs.main.innerText += ',0'; // Jika belum ada koma, tambahkan koma
-                }
-            }
-
-            // Fungsi untuk menambahkan operator matematika pada output
-            insertOperator(op) {
-                this.recoveryFromError(); // Memeriksa error
-
-                // Jika operator sudah ada di akhir output, hapus karakter terakhir
-                if (this.OPERATORS.includes(this.outputs.main.innerText.slice(-1))) {
-                    this.delete();
-                }
-
-                // Jika ada output atas, evaluasi dan tampilkan hasilnya, kemudian tambahkan operator
-                if (this.outputs.sub.innerText.length > 0) {
-                    this.outputs.sub.innerText = this.evaluation(`${this.outputs.sub.innerText}(${this.outputs.main.innerText})`);
-                    this.outputs.sub.innerText += ` ${op} `;
-                    this.outputs.main.innerText = "0";
-                    return;
-                }
-
-                // Tambahkan angka dan operator ke output atas dan set output bawah menjadi 0
-                this.outputs.sub.innerText += `${this.outputs.main.innerText} ${op} `;
-                this.outputs.main.innerText = '0';
-            }
-
-            // Fungsi untuk menghitung hasil dari ekspresi matematika
-            calculate() {
-                this.recoveryFromError(); // Memeriksa error
-
-                // Jika hasilnya adalah nilai khusus, tampilkan nama
-                if (this.outputs.main.innerText == '20112005') {
-                    this.outputs.main.innerText = 'Fern Aerell'
-                    return;
-                }
-
-                // Jika ada ekspresi pada output atas, evaluasi ekspresi tersebut
-                if (this.outputs.sub.innerText.length > 0) {
-                    this.outputs.main.innerText = this.evaluation(`${this.outputs.sub.innerText}(${this.outputs.main.innerText})`);
-                    this.outputs.sub.innerText = ""; // Kosongkan output atas setelah perhitungan
-                }
-            }
-
-            // Fungsi untuk menambahkan simbol persen pada angka
-            insertPercent() {
-                this.recoveryFromError(); // Memeriksa error
-
-                // Jika output tidak kosong dan belum ada persen, tambahkan persen
-                if (this.outputs.main.innerText.length > 0 && !this.outputs.main.innerText.includes("%")) {
-                    this.outputs.main.innerText = `${this.outputs.main.innerText}%`;
-                }
-            }
-
-            // Fungsi untuk mengubah tanda angka (positif/negatif)
-            toggleSign() {
-                this.recoveryFromError(); // Memeriksa error
-
-                const current = this.outputs.main.innerText;
-                // Jika angka tidak 0, tambahkan tanda negatif atau hilangkan tanda negatif
-                if (current !== "0") {
-                    this.outputs.main.innerText = current.startsWith("-") ? current.slice(1) : `-${current}`;
-                }
-            }
-
-            // Fungsi untuk mengevaluasi ekspresi matematika
-            evaluation(expression) {
-                return String(
-                    math.evaluate(
-                        expression
-                            .replaceAll('÷', '/')
-                            .replaceAll('x', '*')
-                            .replaceAll(',', '.')
-                            .replaceAll('Fern Aerell', '20112005')
-                    )
-                )
-                    .replaceAll('/', '÷')
-                    .replaceAll('*', 'x')
-                    .replaceAll('.', ',')
-                    .replaceAll("Infinity", "∞")
-                    .replaceAll("NaN", "Kesalahan")
-                    ;
-            }
-        }
-
-        // Menginisialisasi kalkulator
-        new Calculator(outputs, buttons);
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
