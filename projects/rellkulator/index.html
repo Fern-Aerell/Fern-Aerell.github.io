@@ -66,61 +66,76 @@
                             </div>
                         </div>
                         <div class="row g-2 mt-1">
-                            <!-- Tombol angka dan operator lainnya -->
+                            <!-- Tombol angka 7 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_7" title="Tujuh">7</button>
                             </div>
+                            <!-- Tombol angka 8 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_8"
                                     title="Delapan">8</button>
                             </div>
+                            <!-- Tombol angka 9 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_9"
                                     title="Sembilan">9</button>
                             </div>
+                            <!-- Tombol operator perkalian -->
                             <div class="col-3">
                                 <button class="btn btn-primary btn-calculator" id="button_mul" title="Kali">x</button>
                             </div>
                         </div>
                         <div class="row g-2 mt-1">
+                            <!-- Tombol angka 4 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_4" title="Empat">4</button>
                             </div>
+                            <!-- Tombol angka 5 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_5" title="Lima">5</button>
                             </div>
+                            <!-- Tombol angka 6 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_6" title="Enam">6</button>
                             </div>
+                            <!-- Tombol operator kurang -->
                             <div class="col-3">
                                 <button class="btn btn-primary btn-calculator" id="button_sub" title="Kurang">-</button>
                             </div>
                         </div>
                         <div class="row g-2 mt-1">
+                            <!-- Tombol angka 1 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_1" title="Satu">1</button>
                             </div>
+                            <!-- Tombol angka 2 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_2" title="Dua">2</button>
                             </div>
+                            <!-- Tombol angka 3 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_3" title="Tiga">3</button>
                             </div>
+                            <!-- Tombol operator tambah -->
                             <div class="col-3">
                                 <button class="btn btn-primary btn-calculator" id="button_add" title="Tambah">+</button>
                             </div>
                         </div>
                         <div class="row g-2 mt-1">
+                            <!-- Tombol untuk merubah bilangan ke positif atau negatif -->
                             <div class="col-3">
                                 <button class="btn btn-light btn-calculator" id="button_positive_negative"
                                     title="Positif Atau Negatif">+/-</button>
                             </div>
+                            <!-- Tombol angka 0 -->
                             <div class="col-3">
                                 <button class="btn btn-secondary btn-calculator" id="button_0" title="Nol">0</button>
                             </div>
+                            <!-- Tombol tanda koma -->
                             <div class="col-3">
                                 <button class="btn btn-light btn-calculator" id="button_coma" title="Koma">,</button>
                             </div>
+                            <!-- Tombol sama dengan -->
                             <div class="col-3">
                                 <button class="btn btn-danger btn-calculator" id="button_equal"
                                     title="Sama Dengan">=</button>
@@ -133,23 +148,30 @@
                     <!-- Tautan ke desain Figma -->
                     <a class="d-flex justify-content-center" title="Figma Design" target="_blank"
                         href="https://www.figma.com/design/1hk4GEFzVSF9iMyoRFg7KT/RellKulator?node-id=0-1&t=SXYAZD0vbiCXD8DY-1">
-                        <img class="rounded mt-4" height="32px" width="32px" src="images/figma-icon.webp"
-                            alt="figma-icon" loading="lazy">
+                        <img class="rounded mt-4" height="32px" width="32px" id="figma_icon"
+                            src="images/figma-icon-dark.webp" alt="figma-icon" loading="lazy">
                     </a>
 
                     <!-- Tautan ke repositori Github -->
                     <a class="d-flex justify-content-center" title="Github Repo" target="_blank"
                         href="https://github.com/Fern-Aerell/Rellkulator">
-                        <img class="rounded mt-4" height="32px" width="32px" src="images/github-icon.webp"
-                            alt="github-icon" loading="lazy">
+                        <img class="rounded mt-4" height="32px" width="32px" id="github_icon"
+                            src="images/github-icon-dark.webp" alt="github-icon" loading="lazy">
                     </a>
 
                     <!-- Tautan ke manual book -->
                     <a class="d-flex justify-content-center" title="Manual Book" target="_blank"
                         href="https://github.com/Fern-Aerell/Rellkulator/blob/main/docs/manual_book.md">
-                        <img class="rounded mt-4" height="32px" width="32px" src="images/manual-book-icon.webp"
-                            alt="manual-book-icon" loading="lazy">
+                        <img class="rounded mt-4" height="32px" width="32px" id="manual_book_icon"
+                            src="images/manual-book-icon-dark.webp" alt="manual-book-icon" loading="lazy">
                     </a>
+
+                    <!-- Tombol untuk mengganti tema -->
+                    <button class="btn m-0 p-0 rounded mt-4" id="toggle_theme">
+                        <img height="32px" width="32px" id="toggle_theme_icon"
+                            src="images/dark-light-mode-button-icon-dark.webp" alt="dark-light-mode-button-icon"
+                            loading="lazy">
+                    </button>
                 </div>
             </div>
         </div>
