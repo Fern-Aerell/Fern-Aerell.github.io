@@ -1,0 +1,141 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+:root {
+    --warna-kuning: #FFD43E;
+}
+
+/* Font Family */
+.ff-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Text Decoration */
+.td-none {
+    text-decoration: none;
+}
+
+/* Text Align */
+.ta-center {
+    text-align: center;
+}
+
+/* Font Weight */
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+/* Font Style */
+.fs-normal {
+    font-style: normal;
+}
+
+/* Line Height */
+.lh-100persen {
+    line-height: 100%;
+}
+
+/* Position */
+.p-fixed {
+    position: fixed;
+}
+
+.p-absolute {
+    position: absolute;
+}
+
+/* Reset Margin */
+.m-0 {
+    margin: 0;
+}
+
+/* Reset Padding */
+.p-0 {
+    padding: 0;
+}
+
+/* Reset Margin & Padding */
+.mp-0 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Background color */
+.bgc-white {
+    background-color: white;
+}
+
+.bgc-black {
+    background-color: black;
+}
+
+.bgc-yellow {
+    background-color: var(--warna-kuning);
+}
+
+/* Display */
+.d-flex {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+/* Align Items */
+.ai-center {
+    align-items: center;
+}
+
+/* Justify Content */
+.jc-center {
+    justify-content: center;
+}
+
+.jc-space-between {
+    justify-content: space-between;
+}
+
+.jc-space-around {
+    justify-content: space-around;
+}
+
+/* Color */
+.c-white {
+    color: white;
+}
+
+.c-black {
+    color: black;
+}
+
+/* Flex Direction */
+.fd-column {
+    flex-direction: column;
+}
+
+.fd-row {
+    flex-direction: row;
+}
+
+/* Overflow */
+.o-hidden {
+    overflow: hidden;
+}
+
+/* Width */
+.w-100persen {
+    width: 100%;
+}
+
+/* Border */
+.b-none {
+    border: none;
+}

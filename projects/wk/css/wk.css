@@ -1,0 +1,374 @@
+html {
+    font-size: 16px;
+}
+
+.navbar-container {
+    /* Layout */
+    left: 0;
+    right: 0;
+    padding: 0.8rem 1.2rem;
+    height: 2.5rem;
+    z-index: 3;
+}
+
+.navbar-logo {
+    /* Layout */
+    width: 5.0rem;
+    transform: rotate(-3.05deg);
+}
+
+.navbar-btn-dehaze {
+    /* Layout */
+    padding: 0.7rem;
+    border: none;
+    cursor: pointer;
+    border: none;
+    visibility: hidden;
+    /* Style */
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 25%);
+}
+
+.navbar-btn-dehaze img {
+    /* Layout */
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-btn-dropdown {
+    /* Layout */
+    top: 60px;
+    right: 20px;
+    visibility: hidden;
+    /* Style */
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 25%);
+}
+
+.navbar-btn-dehaze:focus-within .navbar-btn-dropdown {
+    /* Style */
+    visibility: visible;
+}
+
+.navbar-btn-dropdown a {
+    /* Layout */
+    padding: 0.8rem 3rem;
+}
+
+.navbar-btn-menu .bgc-yellow {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 25%);
+}
+
+.navbar-btn-menu a {
+    /* Layout */
+    padding: 0.5rem 1.5rem;
+    margin: 0rem 1.3rem;
+    /* Style */
+    border-radius: 10px;
+}
+
+.header-container {
+    /* Layout */
+    left: 0;
+    right: 0;
+    height: 85vh;
+    padding: 0.8rem 4rem;
+    padding-top: 4.5rem;
+    position: relative;
+    overflow: hidden;
+    /* Style */
+    background: linear-gradient(180deg, #FFD43E 0%, #FFC700 100%);
+}
+
+.header-container h1, h4 {
+    /* Style */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+.header-container h1 {
+    /* Style */
+    font-size: 7rem;
+    transform: translateX(-5px);
+}
+
+.header-container h4 {
+    /* Layout */
+    margin: 0.5rem 0;
+    /* Style */
+    font-size: 2.6rem;
+}
+
+.header-social-media-container {
+    /* Layout */
+    gap: 1rem;
+    height: 4rem;
+    z-index: 2;
+}
+
+.header-social-media-container a img {
+    /* Layout */
+    width: 3rem;
+    /* Style */
+    transition-duration: 300ms;
+}
+
+.header-social-media-container a img:hover {
+    /* Layout */
+    width: 3.5rem;
+    /* Style */
+    transform: rotate(-3.05deg);
+}
+
+.header-emoji {
+    position: absolute;
+    z-index: 1;
+    transition-duration: 1s;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+}
+
+.header-emoji-01 {
+    /* Layout */
+    width: 15vw;
+    /* Style */
+    filter: drop-shadow(12px 13px 4px rgba(0, 0, 0, 0.25));
+    transform: translateX(-5vw) translateY(-35vh);
+}
+
+.header-emoji-02 {
+    /* Layout */
+    width: 8vw;
+    /* Style */
+    transform: rotate(21.517deg) translateX(35vw) translateY(-55vh);
+    filter: drop-shadow(12px 13px 4px rgba(0, 0, 0, 0.25));
+    transition-delay: 100ms;
+}
+
+.header-emoji-03 {
+    /* Layout */
+    width: 11vw;
+    /* Style */
+    transform: rotate(-11.521deg) translateX(15vw) translateY(44vh);
+    filter: drop-shadow(12px 13px 4px rgba(0, 0, 0, 0.25));
+    transition-delay: 200ms;
+}
+
+.header-emoji-04 {
+    /* Layout */
+    width: 35vw;
+    /* Style */
+    filter: drop-shadow(-19px 18px 4px rgba(0, 0, 0, 0.25));
+    transform: translateX(66vw) translateY(23vh);
+    transition-delay: 300ms;
+}
+
+/* FAQ */
+.faq-container {
+    /* Layout */
+    padding: 2.5rem 10vw;
+}
+
+.faq-title {
+    /* Layout */
+    text-align: center;
+}
+
+.faq-content {
+    /* Layout */
+    gap: 3rem;
+    margin: 5.1rem 0;
+}
+
+.faq-q {
+    /* Style */
+    font-size: 2rem;
+}
+
+.faq-a {
+    /* Style */
+    font-size: 1.5rem;
+}
+
+/* Footer */
+.footer-head {
+    /* Layout */
+    padding: 2rem 3rem;
+    height: auto;
+    gap: 3rem;
+    flex-wrap: wrap;
+    /* Style */
+    background-color: var(--warna-kuning);
+}
+
+.footer-title {
+    /* Layout */
+    margin: 0;
+    /* Style */
+    font-size: 1.2rem;
+}
+
+.footer-list {
+    /* Layout */
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.footer-map {
+    /* Layout */
+    position: relative;
+    text-align: right;
+    width: 25rem;
+    height: 13rem;
+}
+
+.footer-map-canvas {
+    /* Layout */
+    overflow: hidden;
+    background: none !important;
+    width: 25rem;
+    height: 13rem;
+}
+
+.footer-map-iframe {
+    /* Layout */
+    height: 13rem !important;
+}
+
+.footer-bottom {
+    /* Layout */
+    height: 4rem;
+    /* Style */
+    background-color: white;
+}
+
+/* Meme Survey */
+.meme-survey-container {
+    /* Layout */
+    min-height: 80vh;
+    padding: 7rem 5vw;
+}
+
+.meme-survey-card {
+    /* Layout */
+    padding: 5rem;
+    gap: 5rem;
+    /* Style */
+    background-color: #EBEBEB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.meme-survey-content > img {
+    width: 100%;
+}
+
+.meme-survey-content > h1 {
+    /* Style */
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.meme-survey-button-container {
+    /* Layout */
+    gap: 7rem;
+}
+
+.meme-survey-button {
+    /* Layout */
+    padding: 0.8rem 5rem;
+    /* Style */
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.meme-survey-button:hover {
+    /* Style */
+    filter: brightness(0.95);
+}
+
+.meme-survey-button:active {
+    /* Style */
+    filter: brightness(1.095);
+}
+
+.meme-survey-button:disabled {
+    /* Style */
+    filter: brightness(0.80);
+    cursor: default;
+}
+
+@media (max-width: 767px) {
+    .navbar-btn-menu {
+        /* Layout */
+        display: none;
+    }
+
+    .navbar-btn-dehaze {
+        /* Style */
+        visibility: visible;
+    }
+
+    .header-container {
+        /* Layout */
+        padding: 0.8rem 15vw;
+    }
+
+    .header-container h1 {
+        /* Style */
+        font-size: 15vw;
+    }
+
+    .header-container h4 {
+        /* Style */
+        font-size: 5vw;
+    }
+
+    .faq-content {
+        /* Layout */
+        gap: 1.5rem;
+    }
+
+    .faq-q {
+        /* Style */
+        font-size: 1.5rem;
+    }
+    
+    .faq-a {
+        /* Style */
+        font-size: 1.2rem;
+    }
+
+    .footer-head {
+        flex-direction: column;
+    }
+
+    .footer-map {
+        /* Layout */
+        width: 100%;
+    }
+    
+    .footer-map-canvas {
+        /* Layout */
+        width: 100%;
+    }
+
+    .meme-survey-button-container {
+        /* Layout */
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .meme-survey-card {
+        /* Layout */
+        padding: 5vw;
+        gap: 1rem;
+    }
+
+    .meme-survey-content > h1 {
+        /* Style */
+        font-size: 3vw;
+        text-align: center;
+    }
+}

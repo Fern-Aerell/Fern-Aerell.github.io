@@ -1,0 +1,1 @@
+const meme = new Meme('data/texts.json', true);

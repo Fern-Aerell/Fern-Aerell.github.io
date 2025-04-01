@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ketawa bersama - Text</title>
+    <link rel="stylesheet" href="css/framework.css">
+    <link rel="stylesheet" href="css/wk.css">
+    <link rel="shortcut icon" href="assets/Logo.svg" type="image/x-icon">
+</head>
+
+<body class="mp-0">
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar-container d-flex p-fixed bgc-white fd-row jc-space-between ai-center">
+            <a href="index.html"><img class="navbar-logo" src="assets/Logo.png" alt="wk logo"></a>
+            <div class="navbar-btn-menu">
+                <a class="ff-poppins td-none c-black bgc-white fs-normal fw-600 lh-100persen" href="index.html">Home</a>
+                <a class="ff-poppins td-none c-black bgc-white fs-normal fw-600 lh-100persen"
+                    href="image.html">Image</a>
+                <a class="ff-poppins td-none c-white bgc-yellow fs-normal fw-600 lh-100persen" href="text.html">Text</a>
+            </div>
+            <button class="navbar-btn-dehaze d-flex bgc-yellow">
+                <img src="assets/icons/dehaze.svg" alt="dehaze">
+                <div class="navbar-btn-dropdown d-flex fd-column p-absolute bgc-white o-hidden">
+                    <a class="ff-poppins d-flex ai-center jc-center td-none bgc-white c-black fs-normal fw-600 lh-100persen"
+                        href="index.html">Home</a>
+                    <a class="ff-poppins d-flex ai-center jc-center td-none bgc-white c-black fs-normal fw-600 lh-100persen"
+                        href="image.html">Image</a>
+                    <a class="ff-poppins d-flex ai-center jc-center td-none bgc-yellow c-white fs-normal fw-600 lh-100persen"
+                        href="text.html">Text</a>
+                </div>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="meme-survey-container d-flex jc-center ai-center">
+            <div class="meme-survey-card ff-poppins d-flex fd-column ai-center jc-center">
+                <div class="meme-survey-content d-flex jc-center ai-center">
+                    <h1 id="meme_text" class="fs-normal fw-600">Load Meme Data...</h1>
+                </div>
+                <div class="meme-survey-button-container d-flex fd-row jc-center">
+                    <button id="lucu_button" class="meme-survey-button bgc-yellow c-white b-none fw-600 fs-normal" onclick="meme.lucuBangetButton()">Lucu banget</button>
+                    <button id="biasa_button" class="meme-survey-button bgc-white c-black b-none fw-600 fs-normal" onclick="meme.biasaAjaButton()">Biasa aja</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="ff-poppins d-flex fd-column">
+        <div class="footer-head d-flex fd-row jc-space-between">
+            <div>
+                <h1 class="footer-title fs-normal fw-600">Lokasi</h1>
+                <div class="footer-map">
+                    <div class="footer-map-canvas">
+                        <iframe class="footer-map-iframe" width="100%" frameborder="0" scrolling="no" marginheight="0"
+                            marginwidth="0"
+                            src="https://maps.google.com/maps?width=358&amp;height=210&amp;hl=en&amp;q=Korea Utara&amp;t=&amp;z=6&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h1 class="footer-title fs-normal fw-600">Kontak</h1>
+                <ul class="footer-list">
+                    <li>Nomor : 086666666666</li>
+                    <li>Email : ketawabersama@wk.com</li>
+                    <li>Instagram : @ketawabersamawk</li>
+                    <li>Facebook : ketawabersamawk</li>
+                    <li>Tiktok : @ketawabersamawk</li>
+                </ul>
+            </div>
+            <div>
+                <h1 class="footer-title fs-normal fw-600">Informasi</h1>
+                <ul class="footer-list">
+                    <li>Syarat dan ketentuan</li>
+                    <li>kebijakan privasi</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom d-flex jc-center ai-center">
+            <span>&copy; Fern Aerell 2023/2024</span>
+        </div>
+    </footer>
+
+    <!-- Library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <!-- Core -->
+    <script src="javascript/core/Meme.js"></script>
+    <!-- Models -->
+    <script src="javascript/models/Model.js"></script>
+    <script src="javascript/models/MemeModel.js"></script>
+    <!-- Utils -->
+    <script src="javascript/utils.js"></script>
+    <!-- Default -->
+    <script src="javascript/text.js"></script>
+</body>
+
+</html>
